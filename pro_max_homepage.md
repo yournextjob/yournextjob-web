@@ -14,6 +14,33 @@
 
 ---
 
+## Single-page rule
+
+The live site is strictly a single-page layout with no sub-pages. Every link in the header, footer, cards, forms and buttons must be an on-page anchor jump, never an external web route.
+
+- **Allowed:** bare anchors such as `#roles`, `#why-us`, `#employers`, `#employer-terms`, `#engineers`, `#resources`, `#about`, `#newsletter`, `#contact`, plus the legal anchors `#privacy`, `#terms` and `#web-terms` (sections 9 to 11).
+- **Not allowed:** routes such as `/about`, `/privacy`, `/terms`, `/website-terms`, `/resources`, root-relative anchors such as `/#contact`, and `mailto:` buttons that expose an email address. Use `#contact` instead.
+- **External links** are limited to the LinkedIn profile, mentioned third-party tools and embedded video, and open in a new tab with `rel="noopener"`.
+- Every anchor id is unique across the whole page. Where several documents share section names (the three legal texts), the id is prefixed with the document key (`privacy-`, `terms-`, `web-terms-`).
+- Every anchored section has a stable `id` and a scroll offset of about 80px so the sticky header does not cover its heading. Respect `prefers-reduced-motion` by jumping instantly.
+- The page has one title and one meta description. There are no per-page titles, sitemap entries or "create the page" steps in this plan.
+- Articles, guides and legal texts open inline (expand in place or accordion) rather than linking to separate pages.
+
+| Anchor | Section | Linked from |
+|---|---|---|
+| `#roles` | Live roles | Header `Jobs` and `Browse roles`, final CTA, footer |
+| `#why-us` | Why us | Footer, employer section |
+| `#about` | About (founder) | Header `About`, Why us `Meet the founder →`, footer |
+| `#employers` | For employers | Header `Employers`, hero `I'm hiring`, footer |
+| `#employer-terms` | How we work cards | Why us card 1, footer |
+| `#engineers` | For engineers | Header `Engineers`, hero `I'm an engineer`, footer |
+| `#resources` | Resources | Header `Resources`, footer |
+| `#newsletter` | Newsletter | Footer |
+| `#contact` | Contact form and final CTA | Every `Request a consultation` and `Get in touch` |
+| `#privacy`, `#terms`, `#web-terms` | Legal block | Footer bottom bar, form notes, Zero-risk card |
+
+---
+
 ## 1. Typography scale
 
 | Property | Live site | Stripe token | Verdict |
@@ -66,7 +93,7 @@ If you want a closer Stripe feel, keep Karla but drop headings to weight 500 to 
 6. **Repeated heading patterns.** Three sections use a 2-column `h2 + text` format at the same weight, and the "why us" copy appears at least three times ("An Industry Insider, Not a Salesperson", "Engineering Recruitment Done Right", the h3 cards at y=10,219).
 7. **Long page.** About 16,140px, roughly 20 screens at this viewport, with 11 h2s.
 8. **The employer pitch appears twice.** A second dark "FOR EMPLOYERS" block ("Hire Technically Vetted Infrastructure Talent", y≈14,694, about 1,014px tall) repeats the first employer section near y≈5,201 and ends in a `mailto:` button that exposes the contact email. The plan merges the two.
-9. **Nav is thin.** The header holds a logo, a text brand and a single "Subscribe for Updates" button. There are no anchor links to Jobs, Employers, Resources or Contact, and the planned `About` link has no page behind it yet (`/about` is a 404; see section 8).
+9. **Nav is thin.** The header holds a logo, a text brand and a single "Subscribe for Updates" button. There are no anchor links to Jobs, Employers, Resources or Contact. The site is a single page, so every nav link must be an on-page anchor (see the single-page rule).
 
 ---
 
@@ -112,18 +139,21 @@ Verify these visually, since screenshots timed out.
 | 1 | Header | Navigation and one CTA | Subscribe-only header |
 | 2 | Hero | State the value and split audiences | Current hero |
 | 3 | Live roles | Show real listings | "Search Live For Your Next Job In AU" |
-| 4 | Why us | Credibility, once | "Industry Insider", "Done Right" and h3 cards, merged |
+| 4 | Why us | Credibility, once | "Done Right" and the h3 cards, merged |
+| 4b | About (founder) | Founder story and method, on the page (`#about`) | "An Industry Insider, Not a Salesperson" ("About the Founder") |
 | 5 | For employers (merged) | Hiring pitch, proof and terms | "Need Specialized Engineering Staff?" (y≈5,201) and the second "FOR EMPLOYERS" block, "Hire Technically Vetted Infrastructure Talent" (y≈14,694) |
 | 6 | For engineers | PD Match Check | "PD Match Check" and the CV mistake |
 | 7 | Resources | Three best articles | Blog, Career Cheat Code, Risk Assurance Toolkit |
 | 8 | Newsletter | Low-commitment capture | "Stay Ahead in Your Engineering Career" |
 | 9 | Final CTA | Two buttons | "Ready for Your Next Engineering Challenge or Hire?" and "Let's Connect" |
+| 10 | Legal | Privacy, terms of business and website terms as on-page accordions | none (new) |
 
 ### 1. Header
 
 - Left: logo only. Drop the avatar and the duplicate text brand.
-- Links: `Jobs` · `Employers` · `Engineers` · `Resources` · `About`.
-- Right: **one** button, `Browse roles`. Move "Subscribe for Updates" into the footer and section 8.
+- Links, all on-page anchors: `Jobs` → `#roles` · `Employers` → `#employers` · `Engineers` → `#engineers` · `Resources` → `#resources` · `About` → `#about`.
+- Right: **one** button, `Browse roles` (jumps to `#roles`). Move "Subscribe for Updates" into the footer and the Newsletter section (`#newsletter`).
+- Footer links follow the same rule: Candidates (`#roles`, `#engineers`, `#resources`), Employers (`#contact`, `#employer-terms`, `#why-us`), Company (`#about`, `#newsletter`, `#contact`, LinkedIn as the only external link), and a legal bottom bar of `Privacy Policy` → `#privacy` · `Terms of Business` → `#terms` · `Website Terms` → `#web-terms`.
 
 ### 2. Hero
 
@@ -168,7 +198,7 @@ The live page pitches employers twice: "Need Specialized Engineering Staff?" nea
 
 1. `Peer-to-peer screening`: every candidate pre-vetted by a senior civil engineer; Tier 1 and Tier 2 package experience.
 2. `Passive talent network`: mapping and engaging professionals in the Victorian market who are not applying on job boards.
-3. `Zero-risk contingency` (the featured card, dark navy): standard contingency model, blind technically screened profiles at no upfront cost, fee only if you hire. Link `Ask about our terms of business →` goes to `/terms#key-terms` (section 10), with a second link `Or request a consultation` to the contact form; no `mailto:` with a visible email address.
+3. `Zero-risk contingency` (the featured card, dark navy): standard contingency model, blind technically screened profiles at no upfront cost, fee only if you hire. Link `Ask about our terms of business →` jumps to `#terms-key-terms` (the key-terms card in the on-page Terms of Business, section 10), with a second link `Or request a consultation` to `#contact`; no `mailto:` with a visible email address.
 
 **Optional strip ("How it works", three steps):** `Brief us` · `We search and vet` · `You meet a shortlist`. The earlier stats row (placements, days to shortlist) is dropped unless real numbers are supplied.
 
@@ -182,14 +212,14 @@ The live page pitches employers twice: "Need Specialized Engineering Staff?" nea
 - **Body:** `Upload your CV or PD and get a personal review of how it reads to a hiring manager.`
 - Show the upload control (`.txt`, `.docx`, `.pdf`) at 12px minimum, with a visible label and a file-size note.
 - **Button:** `Send for personal review`
-- Add one short block from "The CV mistake most senior engineers make": a 2-sentence teaser with a `Read the full article` text link, not a button.
+- Add one short block from "The CV mistake most senior engineers make": a 2-sentence teaser with a `Read the full article` text link, not a button. The link expands the article in place; there is no separate article page.
 
 ### 7. Resources
 
 - **H2:** `Guides for engineers and hiring managers`
 - Three cards only, 20px titles, with category, read time and author: *Top Engineering Skills in Demand for 2025*, *Resume Mistakes That Cost Engineers Interviews*, *3 Civil Engineering Skills That Pay Higher Rates in 2026*.
 - Mark the "How to Leverage Technology in Engineering Recruitment" card, which still reads "Coming Soon", as hidden until it is published.
-- Move "Career Cheat Code #42" (AI agents) and "The Risk Assurance Toolkit" to a `/resources` page. Add a text link `See all resources`.
+- Keep "Career Cheat Code #42" (AI agents) and "The Risk Assurance Toolkit" inside this section as collapsed items under a `Show more guides` toggle. There is no `/resources` page and no `See all resources` link to another route. Article cards expand in place (`Read the article →` opens the text inline).
 - Update the stale year in "Top Engineering Skills in Demand for 2025" now that it is 2026.
 
 ### 8. Newsletter
@@ -222,36 +252,35 @@ The live page pitches employers twice: "Need Specialized Engineering Staff?" nea
 - Remove the "Coming Soon" article from the public listing, or label it clearly.
 - Text-in-hero over a photo: add a solid or gradient scrim so the sub-text meets contrast on the bright shirt area.
 
-## 8. About page (new page, `/about`)
+## 8. About section (on-page, `#about`)
 
-`https://www.yournextjobtalent.com/about` returns a 404, so the header, footer and Why us credibility-strip links to "About" currently point nowhere. The homepage already holds the raw material in its "About the Founder" section ("An Industry Insider, Not a Salesperson"), which the homepage plan merges into Why us. The full story moves to a dedicated page. No new facts are added to the live wording.
+`/about` returns a 404 and the site has no sub-pages, so the founder story is an on-page section, not a page. The homepage already holds the raw material in its "About the Founder" section ("An Industry Insider, Not a Salesperson"). No new facts are added to the live wording.
+
+**Placement:** directly below Why us. The Why us section ends with a text link `Meet the founder →` that jumps to `#about`.
 
 | # | Block | Job | Content |
 |---|---|---|---|
-| 1 | Hero | Identify the founder and the offer | Eyebrow `About the founder`. H1 `An industry insider, not a salesperson.` Intro: a Senior Project Manager who has delivered major infrastructure projects across Australia and started the business to close the gap between engineers and the companies that hire them. Meta line `[ Name ] · Senior Project Manager · [ City, State ]`. Buttons `Request a consultation` and `I'm an engineer`. Founder photo (real photo, not stock) with a `Senior Project Manager` badge. |
-| 2 | Story | Tell the origin in the founder's voice | H2 `Why I started this`. Four paragraphs taken from the live copy: not a traditional recruiter; frustration with good engineers overlooked for poor resumes and hiring managers buried in irrelevant CVs; `I bridge that gap.` as a pull-quote; "someone who speaks your language". |
-| 3 | How I vet | Explain the method | H2 `I assess candidates through the lens of a Project Manager`. Three cards from the live copy: `Technical competence`, `Communication skills`, `Delivery focus`. |
+| 1 | Header | Identify the founder | Eyebrow `About the founder`. H2 `An industry insider, not a salesperson.` Intro: a Senior Project Manager who has delivered major infrastructure projects across Australia and started the business to close the gap between engineers and the companies that hire them. Meta line `[ Name ] · Senior Project Manager · [ City, State ]`. Founder photo (real photo, not stock) with a `Senior Project Manager` badge. |
+| 2 | Story | Tell the origin in the founder's voice | `Why I started this`. Four paragraphs taken from the live copy: not a traditional recruiter; frustration with good engineers overlooked for poor resumes and hiring managers buried in irrelevant CVs; `I bridge that gap.` as a pull-quote; "someone who speaks your language". |
+| 3 | How I vet | Explain the method | Three cards from the live copy: `Technical competence`, `Communication skills`, `Delivery focus`. |
 | 4 | Background | Credentials | A strip with `[ Active Interface Manager on complex packages such as SRL East ]`, `[ Civil College Victoria ]`, `[ Engineers Australia ]` as editable text, no logos unless supplied. |
-| 5 | Who I work with | Route each audience | Two cards, `Engineers` (links to the PD Match Check) and `Employers` (links to `#employer-terms`), text links only. |
-| 6 | Final CTA | Close | The navy band from the homepage: `Let's talk about your next hire or your next role.` with `Request a consultation` and `Browse roles`. |
+
+**Dropped from the earlier page plan:** the separate "Who I work with" cards and the closing call-to-action band. The Employers, Engineers and Final CTA sections already do those jobs.
 
 **Rules**
 
-- First-person voice ("I") throughout, matching the live copy. Change it everywhere (including the Why us strip) if the brand should say "we".
-- One filled primary button per band; the hero and final CTA use the same labels as the rest of the site.
+- First-person voice ("I") throughout, matching the live copy. Change it everywhere (including the Why us link) if the brand should say "we".
+- No filled button in this section. One text link `Request a consultation →` jumps to `#contact`.
 - Use the real founder photo; do not use stock or generated people.
-- Structured data (Person, Organization) only for fields that are filled in; omit anything still a placeholder.
-- Page title `About - Your Next Job AU | Engineering recruitment, Australia`, meta description under 155 characters, one H1, add the page to the sitemap.
-
-**Links to wire:** header and footer `About` → `/about`; Why us credibility strip `About me →` → `/about`; the page's own buttons go to `/#contact`, `/#engineers`, `/#roles` and `/#employer-terms`.
+- Structured data (Person) only for fields that are filled in; omit anything still a placeholder.
 
 **Claims to confirm:** the SRL East reference and the Civil College Victoria and Engineers Australia involvement are public statements. They are kept as written on the live site, but should be checked before publishing. Also decide whether the founder's surname is shown.
 
 ---
 
-## 9. Privacy Policy page (new page, `/privacy`)
+## 9. Privacy Policy (on-page legal accordion, `#privacy`)
 
-The site collects personal information in several places, and the footer plan links to a Privacy Policy. I have not confirmed that `/privacy` exists, so the plan is to create it only if missing and otherwise edit the existing page.
+**The Legal block (applies to sections 9, 10 and 11).** One section titled `Legal` sits directly above the footer and holds three collapsed accordions: Privacy Policy (`#privacy`), Terms of Business (`#terms`) and Website Terms (`#web-terms`). Footer links and in-page links jump to the accordion and expand it. Each panel has a last-updated date, an intro and its own contents list, with body text at 17px and line-height 1.7. Section anchors inside a document are prefixed with the document key so ids stay unique on one page (`privacy-`, `terms-`, `web-terms-`); the **Anchor** columns below show the suffix. The documents link to each other with `#privacy`, `#terms` and `#web-terms`. There are no separate legal pages, no per-page titles and no sitemap entries.
 
 **What the site collects (from the live page and the plan)**
 
@@ -259,122 +288,117 @@ The site collects personal information in several places, and the footer plan li
 - Newsletter: email address and, optionally, whether the person is an engineer or an employer.
 - PD Match Check: email, an uploaded CV or position description (`.txt`, `.docx`, `.pdf`), and the targeted role.
 - Candidate sourcing: the live copy says the business maps and engages professionals who have not applied ("Passive Talent Network"), and presents "blind" profiles to employers.
-- Website analytics and cookies: not yet identified.
+- Website analytics and cookies: not yet identified in this plan.
 
 | # | Section | Anchor | Content |
 |---|---|---|---|
-| 1 | What we collect | `#collect` | The five sources above. |
-| 2 | How we use it | `#use` | Replying, CV and PD reviews, matching, the newsletter, running the site, legal obligations. |
-| 3 | Who we share it with | `#sharing` | Employers only with the person's agreement; service providers `[ list ]`; legal requirements; overseas storage `[ confirm ]`. |
-| 4 | CVs, position descriptions and candidate files | `#cvs` | Used to prepare the review; retention `[ period ]`; who can access them. |
-| 5 | Finding people who have not applied | `#sourcing` | Public sources, what is recorded, how people are told, how they opt out. All details `[ to confirm ]`. |
-| 6 | Storage and security | `#storage` | Reasonable steps `[ actual measures ]`. |
-| 7 | How long we keep it | `#retention` | Per data type `[ periods ]`. |
-| 8 | Cookies and analytics | `#cookies` | Tools used `[ names ]`; browser controls. |
-| 9 | Your choices and rights | `#rights` | Access, correction, deletion, newsletter unsubscribe, OAIC complaint route. |
-| 10 | Contact us | `#contact-us` | `[ business name / ABN ]`, `[ privacy contact email ]`, `[ reply time ]`. |
-| 11 | Changes to this policy | `#changes` | Date at the top shows the last update. |
+| 1 | What we collect | `collect` | The five sources above. |
+| 2 | How we use it | `use` | Replying, CV and PD reviews, matching, the newsletter, running the site, legal obligations. |
+| 3 | Who we share it with | `sharing` | Employers only with the person's agreement; service providers `[ list ]`; legal requirements; overseas storage `[ confirm ]`. |
+| 4 | CVs, position descriptions and candidate files | `cvs` | Used to prepare the review; retention `[ period ]`; who can access them. |
+| 5 | Finding people who have not applied | `sourcing` | Public sources, what is recorded, how people are told, how they opt out. All details `[ to confirm ]`. |
+| 6 | Storage and security | `storage` | Reasonable steps `[ actual measures ]`. |
+| 7 | How long we keep it | `retention` | Per data type `[ periods ]`. |
+| 8 | Cookies and analytics | `cookies` | Tools used `[ names ]`; browser controls. |
+| 9 | Your choices and rights | `rights` | Access, correction, deletion, newsletter unsubscribe, OAIC complaint route. |
+| 10 | Contact us | `contact-us` | `[ business name / ABN ]`, `[ privacy contact email ]`, `[ reply time ]`. |
+| 11 | Changes to this policy | `changes` | Date at the top shows the last update. |
 
-**Layout:** header block (eyebrow `Legal`, H1 `Privacy Policy`, last-updated date, short intro), then a sticky "On this page" contents list on the left (a dropdown on mobile) and a 720px reading column. Body 17px at line-height 1.7, one H1, H2 per section, links in the indigo primary, no buttons in the body.
+**Links to wire (anchors only)**
 
-**Links to wire**
-
-- Footer bottom bar: `Privacy Policy` → `/privacy` (a Terms link only if a Terms page exists).
-- Newsletter helper text → `/privacy#collect`; PD Match Check note → `/privacy#cvs`; contact form note → `/privacy`.
-- Page title `Privacy Policy | Your Next Job AU`, meta description under 155 characters, add to the sitemap.
+- Footer bottom bar: `Privacy Policy` → `#privacy`.
+- Newsletter helper text → `#privacy-collect`; PD Match Check note → `#privacy-cvs`; contact form note → `#privacy`.
 
 **Rules**
 
 - The text must match what the forms and the business actually do. The form microcopy in this plan ("We only use your details to reply to you", "Your file is used only to prepare your review") must be changed if the real practice is wider.
-- No invented facts: every provider, retention period, storage country and security measure stays a visible `[ ]` placeholder until supplied, and the page is not published while any remain.
+- No invented facts: every provider, retention period, storage country and security measure stays a visible `[ ]` placeholder until supplied, and the block is not published while any remain.
 - No email address, phone number or ABN appears unless the owner supplies it.
 - This is a draft structure, not legal advice. Have the final text reviewed, in particular section 5, since collecting details from public sources has its own requirements under the Australian Privacy Principles, and whether the Privacy Act applies depends on the business's circumstances. The newsletter also needs Spam Act compliance (consent, sender identification, working unsubscribe link), which is separate from this policy.
 
-**Related page:** the contingency card refers to "terms of business". That is a separate document, covered in section 10.
+**Related section:** the contingency card refers to "terms of business", covered in section 10.
 
 ---
 
-## 10. Terms of Business page (new page, `/terms`)
+## 10. Terms of Business (on-page legal accordion, `#terms`)
 
-The live contingency card ends in a `mailto:` button, "Contact Us for Terms of Business", so the terms are only available on request and no `/terms` page exists. This page publishes the client terms for employers, in the same long-form layout as the Privacy Policy. I have not confirmed whether `/terms` already exists, so the plan is to create it only if missing.
+The live contingency card ends in a `mailto:` button, "Contact Us for Terms of Business", so the terms are only available on request. This accordion publishes the client terms for employers inside the Legal block described in section 9.
 
 **What the site already commits to (and the terms must match):** contingency basis, zero upfront cost, blind technically screened profiles, and a placement fee only if the employer hires a candidate introduced by the business.
 
-**Page structure**
+**Structure**
 
-- **Header block:** eyebrow `Legal`, H1 `Terms of Business`, last-updated date, a short intro that repeats the contingency promise.
-- **"Key terms at a glance" card** directly under the header (anchor `#key-terms`): `Upfront cost: None` · `When a fee applies: only if you hire a candidate we introduce` · `Fee: [ N ]% of [ remuneration basis ] or fixed fee` · `Payment terms: [ N ] days, plus GST`. The card must agree with the full terms below; any placeholder value is highlighted.
+- **Header:** eyebrow `Legal`, title `Terms of Business`, last-updated date, a short intro that repeats the contingency promise.
+- **"Key terms at a glance" card** at the top of the panel (anchor `#terms-key-terms`): `Upfront cost: None` · `When a fee applies: only if you hire a candidate we introduce` · `Fee: [ N ]% of [ remuneration basis ] or fixed fee` · `Payment terms: [ N ] days, plus GST`. The card must agree with the full terms below; any placeholder value is highlighted.
 
 | # | Section | Anchor | Content |
 |---|---|---|---|
-| 1 | Definitions | `#definitions` | `[ legal entity, ABN ]`, You, Candidate, Introduction, Placement. |
-| 2 | Introductions and blind profiles | `#introductions` | Screened candidates; blind profiles hide identity until the candidate agrees; no guarantee of suitability. |
-| 3 | Fees | `#fees` | No upfront fee; fee only on a Placement; `[ percentage and basis ]`; contract and temporary engagements `[ describe ]`; GST exclusive. |
-| 4 | Invoicing and payment | `#invoicing` | `[ invoice trigger ]`, `[ N ]` days, `[ late terms ]`. |
-| 5 | Introduction protection | `#protection` | Fee applies to engagement within `[ N ]` months of introduction, including via related parties; no passing details on without asking. |
-| 6 | Replacement or refund | `#guarantee` | `[ exact terms, or state that there is no guarantee ]`. |
-| 7 | Candidates | `#candidates` | `[ confirm candidates are not charged ]`; accuracy of information; client responsible for its own checks. |
-| 8 | Confidentiality and privacy | `#confidentiality` | Mutual confidentiality; links to `/privacy`. |
-| 9 | Liability | `#liability` | `[ lawyer-approved limits only ]`. |
-| 10 | Governing law | `#law` | `[ state or territory ]`, Australia. |
-| 11 | Changes to these terms | `#changes` | Date at the top; which version applies to existing introductions `[ confirm ]`. |
-| 12 | Contact us | `#contact-us` | `[ business name / ABN ]`, `[ terms contact email ]`, `[ reply time ]`. |
+| 1 | Definitions | `definitions` | `[ legal entity, ABN ]`, You, Candidate, Introduction, Placement. |
+| 2 | Introductions and blind profiles | `introductions` | Screened candidates; blind profiles hide identity until the candidate agrees; no guarantee of suitability. |
+| 3 | Fees | `fees` | No upfront fee; fee only on a Placement; `[ percentage and basis ]`; contract and temporary engagements `[ describe ]`; GST exclusive. |
+| 4 | Invoicing and payment | `invoicing` | `[ invoice trigger ]`, `[ N ]` days, `[ late terms ]`. |
+| 5 | Introduction protection | `protection` | Fee applies to engagement within `[ N ]` months of introduction, including via related parties; no passing details on without asking. |
+| 6 | Replacement or refund | `guarantee` | `[ exact terms, or state that there is no guarantee ]`. |
+| 7 | Candidates | `candidates` | `[ confirm candidates are not charged ]`; accuracy of information; client responsible for its own checks. |
+| 8 | Confidentiality and privacy | `confidentiality` | Mutual confidentiality; links to `#privacy`. |
+| 9 | Liability | `liability` | `[ lawyer-approved limits only ]`. |
+| 10 | Governing law | `law` | `[ state or territory ]`, Australia. |
+| 11 | Changes to these terms | `changes` | Date at the top; which version applies to existing introductions `[ confirm ]`. |
+| 12 | Contact us | `contact-us` | `[ business name / ABN ]`, `[ terms contact email ]`, `[ reply time ]`. |
 
-**Links to wire**
+**Links to wire (anchors only)**
 
-- Footer bottom bar: `Terms of Business` → `/terms` beside `Privacy Policy` and `Website Terms` (section 11); footer Employers column: `Terms of business` → `/terms`.
-- Featured Zero-risk contingency card: `Ask about our terms of business →` → `/terms#key-terms`, plus `Or request a consultation` → `#contact`. Remove every remaining `mailto:` terms button.
-- Contact form, when the visitor selects Employer: a note under the button that the Terms of Business apply to introductions, with no required checkbox.
-- Page title `Terms of Business | Your Next Job AU`, meta description under 155 characters, add to the sitemap.
+- Footer bottom bar: `Terms of Business` → `#terms` beside `Privacy Policy` and `Website Terms`; footer Employers column: `Terms of business` → `#terms`.
+- Featured Zero-risk contingency card: `Ask about our terms of business →` → `#terms-key-terms`, plus `Or request a consultation` → `#contact`. Remove every remaining `mailto:` terms button.
+- Contact form, when the visitor selects Employer: a note under the button that the Terms of Business apply to introductions, linking to `#terms`, with no required checkbox.
 
 **Rules**
 
-- No fee, percentage, period, jurisdiction or guarantee is written in unless the owner supplies it; every one stays a visible `[ ]` placeholder, and the page is not published while any remain.
+- No fee, percentage, period, jurisdiction or guarantee is written in unless the owner supplies it; every one stays a visible `[ ]` placeholder, and the block is not published while any remain.
 - The terms, the key-terms card, the "No fee until you hire" checklist line and the contingency card wording must say exactly the same thing.
 - This is a draft structure, not legal advice. Have a lawyer review the final text. Standard-form contracts with small businesses can fall under the unfair contract terms rules, so clauses such as long introduction-protection periods, broad liability exclusions and automatic fee triggers need particular care.
 - If there is no replacement or refund, say so plainly rather than omitting the section.
 
-**Related page:** terms for using the website itself are a separate document, covered in section 11.
+**Related section:** the rules for using the website itself are in section 11.
 
 ---
 
-## 11. Website Terms of Use page (new page, `/website-terms`)
+## 11. Website Terms of Use (on-page legal accordion, `#web-terms`)
 
-This page sets the rules for using the website itself. It is separate from the Privacy Policy (section 9, how personal information is handled) and the Terms of Business (section 10, the contract with employer clients). Whether `/website-terms` already exists is not confirmed, so the plan is to create it only if missing.
+These terms set the rules for using the website itself. They are separate from the Privacy Policy (section 9, how personal information is handled) and the Terms of Business (section 10, the contract with employer clients), and sit in the same Legal block.
 
 **What the site does that the terms must cover:** shows job listings, takes CV and position-description uploads for the PD Match Check, publishes articles and a downloadable AI Agent Handbook, links to or mentions third-party tools (OpenSpace, nPlan, Document Crunch in the Risk Assurance Toolkit), and states that submissions are "reviewed personally by a Senior Project Manager". The terms must not describe any review as automated or AI-generated.
 
-**Page structure**
+**Structure**
 
-- **Header block:** eyebrow `Legal`, H1 `Website Terms of Use`, last-updated date, and an intro that distinguishes these terms from the Privacy Policy and the Terms of Business.
-- **Sibling links row** under the header (`Privacy Policy →`, `Terms of Business →`), added to `/privacy` and `/terms` too so the three pages link to each other.
+- **Header:** eyebrow `Legal`, title `Website Terms of Use`, last-updated date, and an intro that distinguishes these terms from the Privacy Policy and the Terms of Business.
+- **Sibling links row** under the header (`Privacy Policy →` to `#privacy`, `Terms of Business →` to `#terms`), repeated in the other two accordions so the three texts link to each other.
 
 | # | Section | Anchor | Content |
 |---|---|---|---|
-| 1 | Accepting these terms | `#acceptance` | Use means agreement; `[ legal entity, ABN ]`. |
-| 2 | Using the website | `#using-site` | Lawful use only; no unauthorised access, malicious code, scraping or unsolicited messages. |
-| 3 | Job listings | `#listings` | General information from `[ source ]`; may close or change; not an offer of employment; `[ employer or agent ]`. |
-| 4 | PD Match Check and files you send us | `#pd-match` | Right to share the file; no other people's personal information without permission; general feedback by `[ reviewer ]`, not advice; no guaranteed outcome; links to `/privacy#cvs`. |
-| 5 | Content you send us | `#content` | Permission to use it to respond and provide services; user keeps ownership; `[ confirm no publication without permission ]`. |
-| 6 | Our content and intellectual property | `#ip` | Site content and the AI Agent Handbook belong to `[ legal entity ]`; personal non-commercial use; no republishing. |
-| 7 | Third-party links and tools | `#third-party` | `[ list of tools ]`; no control or responsibility; `[ endorsement or commercial relationship, e.g. affiliate, if any ]`. |
-| 8 | General information only | `#disclaimer` | Articles are not professional advice; salary and market information may be out of date. |
-| 9 | Liability | `#liability` | `[ lawyer-approved wording only ]`. |
-| 10 | Privacy | `#privacy` | Links to `/privacy`. |
-| 11 | Governing law | `#law` | `[ state or territory ]`, Australia. |
-| 12 | Changes to these terms | `#changes` | Date at the top; continued use means acceptance. |
-| 13 | Contact us | `#contact-us` | `[ business name / ABN ]`, `[ contact email ]`, `[ reply time ]`. |
+| 1 | Accepting these terms | `acceptance` | Use means agreement; `[ legal entity, ABN ]`. |
+| 2 | Using the website | `using-site` | Lawful use only; no unauthorised access, malicious code, scraping or unsolicited messages. |
+| 3 | Job listings | `listings` | General information from `[ source ]`; may close or change; not an offer of employment; `[ employer or agent ]`. |
+| 4 | PD Match Check and files you send us | `pd-match` | Right to share the file; no other people's personal information without permission; general feedback by `[ reviewer ]`, not advice; no guaranteed outcome; links to `#privacy-cvs`. |
+| 5 | Content you send us | `content` | Permission to use it to respond and provide services; user keeps ownership; `[ confirm no publication without permission ]`. |
+| 6 | Our content and intellectual property | `ip` | Site content and the AI Agent Handbook belong to `[ legal entity ]`; personal non-commercial use; no republishing. |
+| 7 | Third-party links and tools | `third-party` | `[ list of tools ]`; no control or responsibility; `[ endorsement or commercial relationship, e.g. affiliate, if any ]`. |
+| 8 | General information only | `disclaimer` | Articles are not professional advice; salary and market information may be out of date. |
+| 9 | Liability | `liability` | `[ lawyer-approved wording only ]`. |
+| 10 | Privacy | `privacy-note` | Links to `#privacy`. |
+| 11 | Governing law | `law` | `[ state or territory ]`, Australia. |
+| 12 | Changes to these terms | `changes` | Date at the top; continued use means acceptance. |
+| 13 | Contact us | `contact-us` | `[ business name / ABN ]`, `[ contact email ]`, `[ reply time ]`. |
 
-**Links to wire**
+**Links to wire (anchors only)**
 
-- Footer bottom bar: `Privacy Policy` (`/privacy`) · `Terms of Business` (`/terms`) · `Website Terms` (`/website-terms`). The earlier single `Terms` label becomes `Terms of Business`.
-- PD Match Check note: keep the privacy link and add `By uploading you agree to our Website Terms.` linking to `/website-terms#pd-match`, with no required checkbox.
-- Page title `Website Terms of Use | Your Next Job AU`, meta description under 155 characters, add to the sitemap.
+- Footer bottom bar: `Privacy Policy` (`#privacy`) · `Terms of Business` (`#terms`) · `Website Terms` (`#web-terms`). The earlier single `Terms` label becomes `Terms of Business`.
+- PD Match Check note: keep the privacy link and add `By uploading you agree to our Website Terms.` linking to `#web-terms-pd-match`, with no required checkbox.
 
 **Rules**
 
-- No entity name, ABN, jurisdiction, liability wording, email address or commercial relationship is written in unless the owner supplies it; each stays a visible `[ ]` placeholder, and the page is not published while any remain.
-- The three legal pages must not contradict each other (for example on access to uploaded files or on fees); the Privacy Policy is the detailed source on personal information and the other two link to it.
+- No entity name, ABN, jurisdiction, liability wording, email address or commercial relationship is written in unless the owner supplies it; each stays a visible `[ ]` placeholder, and the block is not published while any remain.
+- The three legal texts must not contradict each other (for example on access to uploaded files or on fees); the Privacy Policy is the detailed source on personal information and the other two link to it.
 - Any affiliate or referral relationship with the tools mentioned must be disclosed clearly; if there is none, the bracket is deleted.
 - The text must not promise any hiring outcome or claim that reviews are automated.
 - This is a draft structure, not legal advice. Have a lawyer review the final text, especially the liability section, since Australian consumer guarantees cannot be excluded where they apply.
@@ -387,8 +411,7 @@ This page sets the rules for using the website itself. It is separate from the P
 2. Fix heading line-height and tracking, and unify h2 to a single size.
 3. Collapse CTAs to the rules in section 6.
 4. Rebuild sections in the order in section 5 (merge, then delete).
-5. Create the About page (section 8) so the nav, footer and Why us links resolve.
-6. Create the Privacy Policy page (section 9), fill every `[ ]` placeholder, and have it reviewed before publishing, so the footer and form links resolve.
-7. Create the Terms of Business page (section 10), fill every `[ ]` placeholder, have it reviewed, and then repoint the contingency card and footer links to it.
-8. Create the Website Terms of Use page (section 11), fill every `[ ]` placeholder, have it reviewed, and relabel the footer legal links so the three legal pages are distinct and cross-linked.
-9. Re-run this audit, including mobile widths and screenshots, once the changes are live.
+5. Give every section a stable `id` and convert every header, footer, card and form link to the on-page anchors in the single-page rule. Remove every `/route` and `mailto:` link.
+6. Add the About section (section 8) directly below Why us and wire `Meet the founder →` to `#about`.
+7. Add the Legal block above the footer with the Privacy Policy, Terms of Business and Website Terms accordions (sections 9 to 11), fill every `[ ]` placeholder, and have the texts reviewed before publishing.
+8. Re-run this audit, including mobile widths and screenshots, and test every anchor jump, once the changes are live.
