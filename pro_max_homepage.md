@@ -249,11 +249,57 @@ The live page pitches employers twice: "Need Specialized Engineering Staff?" nea
 
 ---
 
-## 9. Suggested implementation order
+## 9. Privacy Policy page (new page, `/privacy`)
+
+The site collects personal information in several places, and the footer plan links to a Privacy Policy. I have not confirmed that `/privacy` exists, so the plan is to create it only if missing and otherwise edit the existing page.
+
+**What the site collects (from the live page and the plan)**
+
+- Contact form: name, email, company, message.
+- Newsletter: email address and, optionally, whether the person is an engineer or an employer.
+- PD Match Check: email, an uploaded CV or position description (`.txt`, `.docx`, `.pdf`), and the targeted role.
+- Candidate sourcing: the live copy says the business maps and engages professionals who have not applied ("Passive Talent Network"), and presents "blind" profiles to employers.
+- Website analytics and cookies: not yet identified.
+
+| # | Section | Anchor | Content |
+|---|---|---|---|
+| 1 | What we collect | `#collect` | The five sources above. |
+| 2 | How we use it | `#use` | Replying, CV and PD reviews, matching, the newsletter, running the site, legal obligations. |
+| 3 | Who we share it with | `#sharing` | Employers only with the person's agreement; service providers `[ list ]`; legal requirements; overseas storage `[ confirm ]`. |
+| 4 | CVs, position descriptions and candidate files | `#cvs` | Used to prepare the review; retention `[ period ]`; who can access them. |
+| 5 | Finding people who have not applied | `#sourcing` | Public sources, what is recorded, how people are told, how they opt out. All details `[ to confirm ]`. |
+| 6 | Storage and security | `#storage` | Reasonable steps `[ actual measures ]`. |
+| 7 | How long we keep it | `#retention` | Per data type `[ periods ]`. |
+| 8 | Cookies and analytics | `#cookies` | Tools used `[ names ]`; browser controls. |
+| 9 | Your choices and rights | `#rights` | Access, correction, deletion, newsletter unsubscribe, OAIC complaint route. |
+| 10 | Contact us | `#contact-us` | `[ business name / ABN ]`, `[ privacy contact email ]`, `[ reply time ]`. |
+| 11 | Changes to this policy | `#changes` | Date at the top shows the last update. |
+
+**Layout:** header block (eyebrow `Legal`, H1 `Privacy Policy`, last-updated date, short intro), then a sticky "On this page" contents list on the left (a dropdown on mobile) and a 720px reading column. Body 17px at line-height 1.7, one H1, H2 per section, links in the indigo primary, no buttons in the body.
+
+**Links to wire**
+
+- Footer bottom bar: `Privacy Policy` → `/privacy` (a Terms link only if a Terms page exists).
+- Newsletter helper text → `/privacy#collect`; PD Match Check note → `/privacy#cvs`; contact form note → `/privacy`.
+- Page title `Privacy Policy | Your Next Job AU`, meta description under 155 characters, add to the sitemap.
+
+**Rules**
+
+- The text must match what the forms and the business actually do. The form microcopy in this plan ("We only use your details to reply to you", "Your file is used only to prepare your review") must be changed if the real practice is wider.
+- No invented facts: every provider, retention period, storage country and security measure stays a visible `[ ]` placeholder until supplied, and the page is not published while any remain.
+- No email address, phone number or ABN appears unless the owner supplies it.
+- This is a draft structure, not legal advice. Have the final text reviewed, in particular section 5, since collecting details from public sources has its own requirements under the Australian Privacy Principles, and whether the Privacy Act applies depends on the business's circumstances. The newsletter also needs Spam Act compliance (consent, sender identification, working unsubscribe link), which is separate from this policy.
+
+**Open item:** the contingency card refers to "terms of business". That is a separate document and is not covered by this plan.
+
+---
+
+## 10. Suggested implementation order
 
 1. Define tokens (type scale, one primary, radii, spacing) in `:root`.
 2. Fix heading line-height and tracking, and unify h2 to a single size.
 3. Collapse CTAs to the rules in section 6.
 4. Rebuild sections in the order in section 5 (merge, then delete).
 5. Create the About page (section 8) so the nav, footer and Why us links resolve.
-6. Re-run this audit, including mobile widths and screenshots, once the changes are live.
+6. Create the Privacy Policy page (section 9), fill every `[ ]` placeholder, and have it reviewed before publishing, so the footer and form links resolve.
+7. Re-run this audit, including mobile widths and screenshots, once the changes are live.
