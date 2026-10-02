@@ -65,7 +65,8 @@ If you want a closer Stripe feel, keep Karla but drop headings to weight 500 to 
 5. **Content-marketing sections break the sales flow.** "Career Cheat Code #42" (AI agents), "Latest Insight: The CV Mistake...", "The Risk Assurance Toolkit" and the blog sit between the two conversion paths. This pushes the "Need Specialized Engineering Staff?" employer pitch to y=5,201.
 6. **Repeated heading patterns.** Three sections use a 2-column `h2 + text` format at the same weight, and the "why us" copy appears at least three times ("An Industry Insider, Not a Salesperson", "Engineering Recruitment Done Right", the h3 cards at y=10,219).
 7. **Long page.** About 16,140px, roughly 20 screens at this viewport, with 11 h2s.
-8. **Nav is thin.** The header holds a logo, a text brand and a single "Subscribe for Updates" button. There are no anchor links to Jobs, Employers, Resources or Contact.
+8. **The employer pitch appears twice.** A second dark "FOR EMPLOYERS" block ("Hire Technically Vetted Infrastructure Talent", y≈14,694, about 1,014px tall) repeats the first employer section near y≈5,201 and ends in a `mailto:` button that exposes the contact email. The plan merges the two.
+9. **Nav is thin.** The header holds a logo, a text brand and a single "Subscribe for Updates" button. There are no anchor links to Jobs, Employers, Resources or Contact.
 
 ---
 
@@ -112,7 +113,7 @@ Verify these visually, since screenshots timed out.
 | 2 | Hero | State the value and split audiences | Current hero |
 | 3 | Live roles | Show real listings | "Search Live For Your Next Job In AU" |
 | 4 | Why us | Credibility, once | "Industry Insider", "Done Right" and h3 cards, merged |
-| 5 | For employers | Hiring pitch | "Need Specialized Engineering Staff?" |
+| 5 | For employers (merged) | Hiring pitch, proof and terms | "Need Specialized Engineering Staff?" (y≈5,201) and the second "FOR EMPLOYERS" block, "Hire Technically Vetted Infrastructure Talent" (y≈14,694) |
 | 6 | For engineers | PD Match Check | "PD Match Check" and the CV mistake |
 | 7 | Resources | Three best articles | Blog, Career Cheat Code, Risk Assurance Toolkit |
 | 8 | Newsletter | Low-commitment capture | "Stay Ahead in Your Engineering Career" |
@@ -150,12 +151,30 @@ Verify these visually, since screenshots timed out.
   3. **Australian focus:** `Local market, awards and compliance knowledge in [ sectors ].`
 - Keep "Rigorous candidate vetting", "Dual-sided support" and "Results-driven approach" as a short list inside these cards instead of a second block.
 
-### 5. For employers
+### 5. For employers (merged from two sections)
 
-- **H2:** `Need specialised engineering staff?`
-- **Body (2 lines):** `Tell us the role. You get a shortlist of vetted candidates in [ N days ].`
-- Bullets: `Shortlist in [ N ] days` · `Vetted for technical fit` · `No fee until you hire` *(only if true)*.
-- **Button:** `Request a consultation` (the single employer CTA on the page; drop "Get in Touch Today" and "Get Started Today").
+The live page pitches employers twice: "Need Specialized Engineering Staff?" near y≈5,201, and a second block tagged "FOR EMPLOYERS" near y≈14,694 ("Hire Technically Vetted Infrastructure Talent", three cards, a `mailto:` "Contact Us for Terms of Business" button). They are merged into one section at the first position, and the second block is deleted.
+
+**Top row (two columns: text left, "Your shortlist" card right)**
+
+- **Eyebrow:** `For employers`
+- **H2:** `Hire technically vetted infrastructure talent` (the second block's wording, which is more specific than the question form)
+- **Intro:** `Skip automated ATS filters and generalist recruiters. We deliver engineering and project management professionals who understand the ground reality of major Victorian infrastructure packages, and we judge candidates on technical capability, not document formatting.`
+- **Credibility line:** `Led by an active Interface Manager on complex packages such as SRL East, and involved with Civil College Victoria and Engineers Australia.`
+- **Bullets:** `Shortlist in [ N ] days` · `Every candidate vetted by a senior civil engineer` · `No fee until you hire`
+- **Button:** `Request a consultation` (the single filled button in the section and the single employer CTA on the page; drop "Get in Touch Today", "Get Started Today" and the `mailto:` button). Reply line: `Reply within [ 1 business day ]`.
+
+**Cards row ("How we work", three cards, wording kept from the live site)**
+
+1. `Peer-to-peer screening`: every candidate pre-vetted by a senior civil engineer; Tier 1 and Tier 2 package experience.
+2. `Passive talent network`: mapping and engaging professionals in the Victorian market who are not applying on job boards.
+3. `Zero-risk contingency` (the featured card, dark navy): standard contingency model, blind technically screened profiles at no upfront cost, fee only if you hire. Link `Ask about our terms of business →` goes to the contact form, not a `mailto:` with a visible email address.
+
+**Optional strip ("How it works", three steps):** `Brief us` · `We search and vet` · `You meet a shortlist`. The earlier stats row (placements, days to shortlist) is dropped unless real numbers are supplied.
+
+**Claims to confirm before publishing:** the SRL East reference, the Civil College Victoria and Engineers Australia involvement, and the fee promise are all public statements about the business and are kept as written on the live site. The merged copy says "Victorian" while the hero and page title say "Australian"; choose one scope or state both.
+
+**Anchors:** the merged section is `#employers`; the cards row is `#employer-terms` (linked from the Why us card and the footer).
 
 ### 6. For engineers
 
