@@ -1,21 +1,66 @@
 # UI/UX Pro Max Validation Report
 
 **Site:** https://yournextjobtalent.com (redirects to `www.yournextjobtalent.com`)
-**Audited:** 2026-10-02, desktop viewport 1536px, one pass, live DOM and computed styles via Claude in Chrome
-**Page height:** 16,562px (the first audit measured about 16,140px)
+**First audit:** 2026-10-02, desktop viewport 1536px, one pass, live DOM and computed styles via Claude in Chrome
+**Latest full re-run:** 2026-10-03, same method and viewport
+**Page height:** 16,502px on the latest run (16,562px on the first audit)
 
-## Verdict
+## Verdict (latest full re-run, 2026-10-03)
 
 | Check | Target | Result | Status |
 |---|---|---|---|
-| Font weights | Only 300 and 500 | 20 of 246 text elements (8%) | **FAIL** |
-| Primary colour | Strictly indigo `#533afd` | Every CTA fill is indigo; a few off-brand accents remain | **PARTIAL** |
-| Button overload | About one filled button per section | 14 filled CTAs, 7 button heights, 6+ labels for 3 actions; re-checked after the fix prompts and unchanged | **FAIL** |
-| Contrast | 4.5:1 for text | Nav links fixed (1.21:1 to 15.23:1, see re-check). Muted text 3.96:1 and indigo text on navy 3.04:1 not yet re-measured | **PARTIAL** |
-| Navigation anchors | Every header, footer and card link is an on-page anchor | Link targets not yet read; footer has no legal links | **NOT TESTED** |
-| Placeholders | None visible | 3 `[ ]` placeholders still live after the re-check | **FAIL** |
+| Font weights | Only 300 and 500 | 24 of 246 text elements (10%); H1 is now 300 | **FAIL** |
+| Primary colour | Strictly indigo `#533afd` | All 14 CTA fills are indigo; red status accents, a LinkedIn blue badge and the navy page background remain | **PARTIAL** |
+| Button overload | About one filled button per section | 17 filled, 14 indigo CTAs, 7 heights, same labels; unchanged | **FAIL** |
+| Text contrast | 4.5:1 (3:1 for large text) | 4 of 246 elements fail (2%); nav 15.2:1; hero pill 12.7:1; "Why Us" pill 1.2:1 | **MOSTLY PASS** |
+| Navigation anchors | Every link is an on-page anchor | 40 anchors, none broken; 6 planned anchors missing | **PARTIAL** |
+| Placeholders | None visible | The same 3 `[ ]` placeholders still live | **FAIL** |
+| Icons | Consistent line-art, readable | 117 of 124 solid, 27 low contrast, none empty | **FAIL** |
+| Page structure | About 9 sections, 9,000 to 10,000px | 13 sections, 16,502px; no old section removed | **FAIL** |
 
-The site is part-way through the restructure. New sections and styling have been added, but most of the old sections have not been deleted, so the page is longer than before.
+The site is part-way through the restructure. Some styling has been applied (nav colour, hero pill, H1 weight), but most of the old sections have not been deleted and the legal and About sections have not been added.
+
+---
+
+## Full re-run, 2026-10-03
+
+Every check was re-measured on the live site, using the same definitions as the first audit unless noted.
+
+| Measure | First audit | Previous re-check | Latest | Change |
+|---|---|---|---|---|
+| Text on weight 300 or 500 | 20 of 246 | not re-measured | 24 of 246 | Slightly better |
+| Weight split (300 / 400 / 500 / 600 / 700) | 4 / 92 / 16 / 101 / 33 | not re-measured | 6 / 91 / 18 / 100 / 31 | Almost unchanged |
+| H1 | 56px, weight 700 | not re-measured | 56px, weight **300** | Changed |
+| H2 | 40px, weight 700 | not re-measured | 40px; mostly 700, one style at 500 | Mostly unchanged |
+| Filled button-like elements | 17 | 17 | 17 | None |
+| Indigo CTAs | 14 | 14 | 14 | None |
+| Button heights | 7 (48 to 64px) | 7 | 7 | None |
+| Visible `[ ]` placeholders | 3 | 3 | 3 | None |
+| Header nav link contrast | 1.21:1 | 15.23:1 | 15.2:1 | Fixed |
+| Hero eyebrow pill contrast | looked empty | readable | 12.7:1 | Fixed |
+| "Why Us" eyebrow pill contrast | not seen | not re-measured | **1.2:1** (dark ink on dark) | Still broken |
+| Text elements below contrast thresholds | not totalled | not re-measured | 4 of 246 (2%) | Mostly fixed |
+| Text under 14px (old definition) | 20 | not re-measured | 20 | None |
+| Sections | 13 | not re-measured | 13 | None |
+| Page height | 16,562px | 16,563px | 16,502px | About 60px shorter |
+
+**Text contrast detail.** The grey text that failed in the first audit (about 4.0:1 on the navy) no longer appears in the failures. The four remaining failures are one dark-ink label (the "Why Us" pill, 1.21:1), one element with white text on `#7c6cff` (3.86:1) and two elements with a fully transparent text colour (1.11:1) that I did not identify. The check treats text of 24px and above, or 18.66px and above in bold, as large (3:1 threshold). It is not a like-for-like comparison with the first audit's per-colour contrast notes.
+
+**Buttons, unchanged.** The list is the same as the previous re-check: "Browse roles", "I'm hiring", "View all roles", "Search", the two navy upload controls, "Send for personal review", "Download the AI Agent Handbook", "Get in Touch Today", "Request a Consultation", "Get in Touch" (twice), "Subscribe", "Request a consultation" (two sizes), "Subscribe for Updates", plus the LinkedIn badge.
+
+**Icons.** 124 visible Font Awesome icons, none with an empty glyph. Styles: 117 solid, 5 brands, 1 light, 1 regular. 27 icons sit at under 3:1 contrast (light indigo on solid indigo tiles). The line-art restyle has not been applied.
+
+**Links (single-page rule).** 40 in-page anchor links and none point at a missing id. Four links go to `/` (the logo twice, "yournextjobtalent.com" and "Home"). There are no `mailto:` links. External links go to `drive.google.com`, `www.linkedin.com` and `www.youtube.com`.
+
+- Header targets: `Jobs` → `#jobs`, `Employers` → `#employers`, `Engineers` → `#engineers`, `Resources` → `#resources`, `About` → `#about`, `Browse roles` → `#live-listings`.
+- Present among the planned ids: `why-us`, `about`, `employers`, `engineers`, `resources`, `contact`.
+- **Missing among the planned ids:** `roles`, `employer-terms`, `newsletter`, `privacy`, `terms`, `web-terms`. The site uses `#jobs` and `#live-listings` where the plan says `#roles`; one of the two should change so they match.
+
+**Sections found (y position, id, heading).** 97 hero; 1,107 `job-search-section` "Open engineering roles in Australia"; 2,427 "Check your position description against the market"; 3,556 "Career Cheat Code #42"; 5,859 "Need Specialized Engineering Staff?"; 6,470 "The Risk Assurance Toolkit"; 7,752 "An Industry Insider, Not a Salesperson"; 8,716 "Guides for engineers and hiring managers"; 9,865 "Recruitment from someone who has run engineering projects" (Why us); 10,658 "Stay Ahead in Your Engineering Career"; 12,466 "Get the monthly engineering market note"; 12,920 `contact-form` "Hiring or job hunting? Start here."; 14,087 "Hire technically vetted infrastructure talent". The hero headline is still the old "Connecting Australia's Premier Engineering Talent with Leading Companies".
+
+**Not done yet on the live site:** the About section update, the Legal block (Privacy, Terms of Business, Website Terms), the merged employer section, removal of the old sections, the button cleanup, the placeholder removal, the weight rule and the icon restyle.
+
+**Limits of this run.** Desktop only; hero screenshot only; weights, colours and contrast are computed over visible elements; counts of elements, not of components.
 
 ---
 
@@ -232,7 +277,7 @@ The site is a single-page layout with no sub-pages, so `/about`, `/privacy`, `/t
 
 What is still open:
 
-- **Not checked:** where each header, footer and card link points. The plan requires every one to be an on-page anchor (`#roles`, `#why-us`, `#employers`, `#contact` and so on). The destinations of the header "Resources" and "About" links were not read, so it is unknown whether they jump to a section or to a route that does not exist.
+- **Checked on 2026-10-03:** the header links all jump to on-page anchors (`#jobs`, `#employers`, `#engineers`, `#resources`, `#about`, `#live-listings`) and none of the 40 anchor links point at a missing id. Six planned ids are still absent (`roles`, `employer-terms`, `newsletter`, `privacy`, `terms`, `web-terms`); see the full re-run section.
 - **Footer legal links:** the footer shows Home, Jobs, Engineers, Employers, Why Us and Resources, with **no Privacy, Terms or Cookies links**, even though the site collects emails and CVs and runs Google Analytics. The legal text needs to live on the page and be reachable by anchor from the footer.
 
 ---
@@ -240,11 +285,13 @@ What is still open:
 ## 9. Recommended next steps (in priority order)
 
 1. ~~Fix the nav link colour (contrast 1.21:1).~~ Done: 15.23:1 on the re-check.
-2. Remove the three live placeholders. **Still open** (hero trust line, Why us card, employer checklist).
-3. Delete the old sections that the new ones replaced, and merge the two employer sections.
+2. Remove the three live placeholders. **Still open** on the 2026-10-03 re-run (hero trust line, Why us card, employer checklist).
+3. Delete the old sections that the new ones replaced, and merge the two employer sections. **Still open**: all 13 sections remain.
+3a. Fix the "Why Us" eyebrow pill (1.21:1, dark ink on dark), the last clear contrast failure. The hero pill is fixed.
+3b. Restyle icons to one line-art style with white glyphs on indigo tiles (117 solid, 27 low contrast).
 4. Unify buttons: two heights (48 and 56), one label per action, remove "Get in Touch" variants and the second "Subscribe". **Still open**: re-checked and unchanged (17 filled, 14 indigo, 7 heights).
-5. Decide the weight rule. If 300/500, apply it globally and review the result on the dark background.
-6. Add the legal text (Privacy, Terms of Business, Website Terms) as on-page sections and link them from the footer with anchors (`#privacy`, `#terms`, `#web-terms`). Read the existing header and footer link targets and convert any route to an anchor.
+5. Decide the weight rule. If 300/500, apply it globally and review the result on the dark background. **In progress**: the H1 is now 300, but H2s, card titles and body text are not.
+6. Add the legal text (Privacy, Terms of Business, Website Terms) as on-page sections and link them from the footer with anchors (`#privacy`, `#terms`, `#web-terms`). The header and footer targets have now been read: they are anchors, but `#roles`, `#employer-terms`, `#newsletter`, `#privacy`, `#terms` and `#web-terms` do not exist yet, and the site uses `#jobs` and `#live-listings` where the plan says `#roles`.
 7. Decide whether the page stays dark. If it does, define dark-theme tokens instead of mixing the light Stripe ones.
 8. Re-run this audit after the changes.
 
