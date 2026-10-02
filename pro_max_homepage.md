@@ -66,7 +66,7 @@ If you want a closer Stripe feel, keep Karla but drop headings to weight 500 to 
 6. **Repeated heading patterns.** Three sections use a 2-column `h2 + text` format at the same weight, and the "why us" copy appears at least three times ("An Industry Insider, Not a Salesperson", "Engineering Recruitment Done Right", the h3 cards at y=10,219).
 7. **Long page.** About 16,140px, roughly 20 screens at this viewport, with 11 h2s.
 8. **The employer pitch appears twice.** A second dark "FOR EMPLOYERS" block ("Hire Technically Vetted Infrastructure Talent", y≈14,694, about 1,014px tall) repeats the first employer section near y≈5,201 and ends in a `mailto:` button that exposes the contact email. The plan merges the two.
-9. **Nav is thin.** The header holds a logo, a text brand and a single "Subscribe for Updates" button. There are no anchor links to Jobs, Employers, Resources or Contact.
+9. **Nav is thin.** The header holds a logo, a text brand and a single "Subscribe for Updates" button. There are no anchor links to Jobs, Employers, Resources or Contact, and the planned `About` link has no page behind it yet (`/about` is a 404; see section 8).
 
 ---
 
@@ -222,10 +222,38 @@ The live page pitches employers twice: "Need Specialized Engineering Staff?" nea
 - Remove the "Coming Soon" article from the public listing, or label it clearly.
 - Text-in-hero over a photo: add a solid or gradient scrim so the sub-text meets contrast on the bright shirt area.
 
-## 8. Suggested implementation order
+## 8. About page (new page, `/about`)
+
+`https://www.yournextjobtalent.com/about` returns a 404, so the header, footer and Why us credibility-strip links to "About" currently point nowhere. The homepage already holds the raw material in its "About the Founder" section ("An Industry Insider, Not a Salesperson"), which the homepage plan merges into Why us. The full story moves to a dedicated page. No new facts are added to the live wording.
+
+| # | Block | Job | Content |
+|---|---|---|---|
+| 1 | Hero | Identify the founder and the offer | Eyebrow `About the founder`. H1 `An industry insider, not a salesperson.` Intro: a Senior Project Manager who has delivered major infrastructure projects across Australia and started the business to close the gap between engineers and the companies that hire them. Meta line `[ Name ] · Senior Project Manager · [ City, State ]`. Buttons `Request a consultation` and `I'm an engineer`. Founder photo (real photo, not stock) with a `Senior Project Manager` badge. |
+| 2 | Story | Tell the origin in the founder's voice | H2 `Why I started this`. Four paragraphs taken from the live copy: not a traditional recruiter; frustration with good engineers overlooked for poor resumes and hiring managers buried in irrelevant CVs; `I bridge that gap.` as a pull-quote; "someone who speaks your language". |
+| 3 | How I vet | Explain the method | H2 `I assess candidates through the lens of a Project Manager`. Three cards from the live copy: `Technical competence`, `Communication skills`, `Delivery focus`. |
+| 4 | Background | Credentials | A strip with `[ Active Interface Manager on complex packages such as SRL East ]`, `[ Civil College Victoria ]`, `[ Engineers Australia ]` as editable text, no logos unless supplied. |
+| 5 | Who I work with | Route each audience | Two cards, `Engineers` (links to the PD Match Check) and `Employers` (links to `#employer-terms`), text links only. |
+| 6 | Final CTA | Close | The navy band from the homepage: `Let's talk about your next hire or your next role.` with `Request a consultation` and `Browse roles`. |
+
+**Rules**
+
+- First-person voice ("I") throughout, matching the live copy. Change it everywhere (including the Why us strip) if the brand should say "we".
+- One filled primary button per band; the hero and final CTA use the same labels as the rest of the site.
+- Use the real founder photo; do not use stock or generated people.
+- Structured data (Person, Organization) only for fields that are filled in; omit anything still a placeholder.
+- Page title `About - Your Next Job AU | Engineering recruitment, Australia`, meta description under 155 characters, one H1, add the page to the sitemap.
+
+**Links to wire:** header and footer `About` → `/about`; Why us credibility strip `About me →` → `/about`; the page's own buttons go to `/#contact`, `/#engineers`, `/#roles` and `/#employer-terms`.
+
+**Claims to confirm:** the SRL East reference and the Civil College Victoria and Engineers Australia involvement are public statements. They are kept as written on the live site, but should be checked before publishing. Also decide whether the founder's surname is shown.
+
+---
+
+## 9. Suggested implementation order
 
 1. Define tokens (type scale, one primary, radii, spacing) in `:root`.
 2. Fix heading line-height and tracking, and unify h2 to a single size.
 3. Collapse CTAs to the rules in section 6.
 4. Rebuild sections in the order in section 5 (merge, then delete).
-5. Re-run this audit, including mobile widths and screenshots, once the changes are live.
+5. Create the About page (section 8) so the nav, footer and Why us links resolve.
+6. Re-run this audit, including mobile widths and screenshots, once the changes are live.
