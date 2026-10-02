@@ -322,7 +322,7 @@ The live contingency card ends in a `mailto:` button, "Contact Us for Terms of B
 
 **Links to wire**
 
-- Footer bottom bar: `Terms` → `/terms` beside `Privacy Policy`; footer Employers column: `Terms of business` → `/terms`.
+- Footer bottom bar: `Terms of Business` → `/terms` beside `Privacy Policy` and `Website Terms` (section 11); footer Employers column: `Terms of business` → `/terms`.
 - Featured Zero-risk contingency card: `Ask about our terms of business →` → `/terms#key-terms`, plus `Or request a consultation` → `#contact`. Remove every remaining `mailto:` terms button.
 - Contact form, when the visitor selects Employer: a note under the button that the Terms of Business apply to introductions, with no required checkbox.
 - Page title `Terms of Business | Your Next Job AU`, meta description under 155 characters, add to the sitemap.
@@ -334,11 +334,54 @@ The live contingency card ends in a `mailto:` button, "Contact Us for Terms of B
 - This is a draft structure, not legal advice. Have a lawyer review the final text. Standard-form contracts with small businesses can fall under the unfair contract terms rules, so clauses such as long introduction-protection periods, broad liability exclusions and automatic fee triggers need particular care.
 - If there is no replacement or refund, say so plainly rather than omitting the section.
 
-**Not covered:** terms of use for the website itself are a separate document and are not in this plan.
+**Related page:** terms for using the website itself are a separate document, covered in section 11.
 
 ---
 
-## 11. Suggested implementation order
+## 11. Website Terms of Use page (new page, `/website-terms`)
+
+This page sets the rules for using the website itself. It is separate from the Privacy Policy (section 9, how personal information is handled) and the Terms of Business (section 10, the contract with employer clients). Whether `/website-terms` already exists is not confirmed, so the plan is to create it only if missing.
+
+**What the site does that the terms must cover:** shows job listings, takes CV and position-description uploads for the PD Match Check, publishes articles and a downloadable AI Agent Handbook, links to or mentions third-party tools (OpenSpace, nPlan, Document Crunch in the Risk Assurance Toolkit), and states that submissions are "reviewed personally by a Senior Project Manager". The terms must not describe any review as automated or AI-generated.
+
+**Page structure**
+
+- **Header block:** eyebrow `Legal`, H1 `Website Terms of Use`, last-updated date, and an intro that distinguishes these terms from the Privacy Policy and the Terms of Business.
+- **Sibling links row** under the header (`Privacy Policy →`, `Terms of Business →`), added to `/privacy` and `/terms` too so the three pages link to each other.
+
+| # | Section | Anchor | Content |
+|---|---|---|---|
+| 1 | Accepting these terms | `#acceptance` | Use means agreement; `[ legal entity, ABN ]`. |
+| 2 | Using the website | `#using-site` | Lawful use only; no unauthorised access, malicious code, scraping or unsolicited messages. |
+| 3 | Job listings | `#listings` | General information from `[ source ]`; may close or change; not an offer of employment; `[ employer or agent ]`. |
+| 4 | PD Match Check and files you send us | `#pd-match` | Right to share the file; no other people's personal information without permission; general feedback by `[ reviewer ]`, not advice; no guaranteed outcome; links to `/privacy#cvs`. |
+| 5 | Content you send us | `#content` | Permission to use it to respond and provide services; user keeps ownership; `[ confirm no publication without permission ]`. |
+| 6 | Our content and intellectual property | `#ip` | Site content and the AI Agent Handbook belong to `[ legal entity ]`; personal non-commercial use; no republishing. |
+| 7 | Third-party links and tools | `#third-party` | `[ list of tools ]`; no control or responsibility; `[ endorsement or commercial relationship, e.g. affiliate, if any ]`. |
+| 8 | General information only | `#disclaimer` | Articles are not professional advice; salary and market information may be out of date. |
+| 9 | Liability | `#liability` | `[ lawyer-approved wording only ]`. |
+| 10 | Privacy | `#privacy` | Links to `/privacy`. |
+| 11 | Governing law | `#law` | `[ state or territory ]`, Australia. |
+| 12 | Changes to these terms | `#changes` | Date at the top; continued use means acceptance. |
+| 13 | Contact us | `#contact-us` | `[ business name / ABN ]`, `[ contact email ]`, `[ reply time ]`. |
+
+**Links to wire**
+
+- Footer bottom bar: `Privacy Policy` (`/privacy`) · `Terms of Business` (`/terms`) · `Website Terms` (`/website-terms`). The earlier single `Terms` label becomes `Terms of Business`.
+- PD Match Check note: keep the privacy link and add `By uploading you agree to our Website Terms.` linking to `/website-terms#pd-match`, with no required checkbox.
+- Page title `Website Terms of Use | Your Next Job AU`, meta description under 155 characters, add to the sitemap.
+
+**Rules**
+
+- No entity name, ABN, jurisdiction, liability wording, email address or commercial relationship is written in unless the owner supplies it; each stays a visible `[ ]` placeholder, and the page is not published while any remain.
+- The three legal pages must not contradict each other (for example on access to uploaded files or on fees); the Privacy Policy is the detailed source on personal information and the other two link to it.
+- Any affiliate or referral relationship with the tools mentioned must be disclosed clearly; if there is none, the bracket is deleted.
+- The text must not promise any hiring outcome or claim that reviews are automated.
+- This is a draft structure, not legal advice. Have a lawyer review the final text, especially the liability section, since Australian consumer guarantees cannot be excluded where they apply.
+
+---
+
+## 12. Suggested implementation order
 
 1. Define tokens (type scale, one primary, radii, spacing) in `:root`.
 2. Fix heading line-height and tracking, and unify h2 to a single size.
@@ -347,4 +390,5 @@ The live contingency card ends in a `mailto:` button, "Contact Us for Terms of B
 5. Create the About page (section 8) so the nav, footer and Why us links resolve.
 6. Create the Privacy Policy page (section 9), fill every `[ ]` placeholder, and have it reviewed before publishing, so the footer and form links resolve.
 7. Create the Terms of Business page (section 10), fill every `[ ]` placeholder, have it reviewed, and then repoint the contingency card and footer links to it.
-8. Re-run this audit, including mobile widths and screenshots, once the changes are live.
+8. Create the Website Terms of Use page (section 11), fill every `[ ]` placeholder, have it reviewed, and relabel the footer legal links so the three legal pages are distinct and cross-linked.
+9. Re-run this audit, including mobile widths and screenshots, once the changes are live.
