@@ -10,7 +10,7 @@
 |---|---|---|---|
 | Font weights | Only 300 and 500 | 20 of 246 text elements (8%) | **FAIL** |
 | Primary colour | Strictly indigo `#533afd` | Every CTA fill is indigo; a few off-brand accents remain | **PARTIAL** |
-| Button overload | About one filled button per section | 14 filled CTAs, 7 button heights, 6+ labels for 3 actions | **FAIL** |
+| Button overload | About one filled button per section | 14 filled CTAs, 7 button heights, 6+ labels for 3 actions; re-checked after the fix prompts and unchanged | **FAIL** |
 | Contrast | 4.5:1 for text | Nav links fixed (1.21:1 to 15.23:1, see re-check). Muted text 3.96:1 and indigo text on navy 3.04:1 not yet re-measured | **PARTIAL** |
 | Legal and support pages | Exist and are linked | `/about`, `/privacy`, `/terms`, `/website-terms`, `/cookies`, `/resources` all return 404 | **FAIL** |
 | Placeholders | None visible | 3 `[ ]` placeholders still live after the re-check | **FAIL** |
@@ -38,6 +38,51 @@ Re-measured on the live site after the Landingsite prompts for the nav contrast 
 - The three placeholders are unchanged, so the public page still shows unfinished text. The remove-the-wording prompt (or the fill-in prompt, if real figures are available) has not been applied.
 - Page title and meta description were checked and contain no placeholder text. The meta description still reads generically ("Explore Your Next Job AU, your ultimate source for career advice...") and the old hero headline is unchanged.
 - Not re-measured: muted text (`#64748b`, 3.96:1), indigo text on navy (`#533afd`, 3.04:1), button counts, font weights and section structure. These keep their first-pass results below.
+
+---
+
+## Re-check after the button overload fixes
+
+Buttons were re-counted on the live site with the same definition as the first pass (a visible button or link with a filled background, at least 36px tall and 80px wide). Page height is now 16,563px (16,562px before).
+
+**Result: no change.** The button fix prompts have not taken effect on the live page.
+
+| Measure | First pass | Re-check | Target |
+|---|---|---|---|
+| Filled button-like elements | 17 | 17 | |
+| Of which indigo CTAs | 14 | 14 | 8 to 9 |
+| Button heights in use | 48, 53, 54, 56, 60, 62, 64 (7) | 48, 53, 54, 56, 60, 62, 64 (7) | 48 and 56 only |
+| Corner radius | all pill (9999px) | all pill (9999px) | pill |
+
+**Filled buttons found (y position, label, size)**
+
+| y | Label | Size |
+|---|---|---|
+| 24 | Browse roles | 141x48 |
+| 813 | I'm hiring | 267x62 |
+| 2,153 | View all roles | 186x56 |
+| 2,286 | Search | 140x53 |
+| 3,004 | Upload PD (navy) | 536x48 |
+| 3,004 | Upload CV (navy) | 536x48 |
+| 3,121 | Send for personal review | 337x60 |
+| 4,596 | Download the AI Agent Handbook | 400x60 |
+| 5,763 | **Get in Touch Today** | 267x60 |
+| 6,374 | Request a Consultation | 282x60 |
+| 6,626 | As seen on LinkedIn (tag) | 203x48 |
+| 8,621 | **Get in Touch** | 190x60 |
+| 12,371 | **Get in Touch** | 190x60 |
+| 12,799 | Subscribe | 162x54 |
+| 13,209 | Request a consultation | 326x64 |
+| 14,882 | Request a consultation | 263x56 |
+| 16,206 | **Subscribe for Updates** | 373x48 |
+
+**Still present (the three leftover "Get in Touch" calls to action, in bold above):** "Get in Touch Today" (y≈5,763) and two "Get in Touch" buttons (y≈8,621 and y≈12,371). "Subscribe for Updates" (y≈16,206) also remains as a second subscribe button. The case mismatch "Request a Consultation" / "Request a consultation" is unchanged.
+
+**Engineers section (y≈3,004 to 3,121):** still three filled buttons together: two navy upload controls ("Upload PD", "Upload CV") and the indigo "Send for personal review".
+
+**Other get-in-touch controls (outline, not filled):** three outline "Get in Touch" links at y≈9,660 (99x48 each), a wide "Subscribe & Get in Touch" control at y≈13,798 (1052x68), and an "Or request a consultation" link at y≈15,399. I did not check what these are, so they are not counted above, but they add to the repeated get-in-touch wording: "Get in Touch" appears in seven controls in total (three filled buttons, three outline links and the wide "Subscribe & Get in Touch" control).
+
+**Still true from the first pass:** the primary action colour is `#533afd` on all 14 CTA fills, the radius is a pill everywhere, and the header's "Browse roles" is correctly a primary at 48px.
 
 ---
 
@@ -197,7 +242,7 @@ All of these return the site's 404 page:
 1. ~~Fix the nav link colour (contrast 1.21:1).~~ Done: 15.23:1 on the re-check.
 2. Remove the three live placeholders. **Still open** (hero trust line, Why us card, employer checklist).
 3. Delete the old sections that the new ones replaced, and merge the two employer sections.
-4. Unify buttons: two heights (48 and 56), one label per action, remove "Get in Touch" variants and the second "Subscribe".
+4. Unify buttons: two heights (48 and 56), one label per action, remove "Get in Touch" variants and the second "Subscribe". **Still open**: re-checked and unchanged (17 filled, 14 indigo, 7 heights).
 5. Decide the weight rule. If 300/500, apply it globally and review the result on the dark background.
 6. Create `/privacy`, `/terms`, `/website-terms` and `/cookies` and link them in the footer.
 7. Decide whether the page stays dark. If it does, define dark-theme tokens instead of mixing the light Stripe ones.
