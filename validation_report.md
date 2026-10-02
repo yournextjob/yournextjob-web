@@ -12,7 +12,7 @@
 | Primary colour | Strictly indigo `#533afd` | Every CTA fill is indigo; a few off-brand accents remain | **PARTIAL** |
 | Button overload | About one filled button per section | 14 filled CTAs, 7 button heights, 6+ labels for 3 actions; re-checked after the fix prompts and unchanged | **FAIL** |
 | Contrast | 4.5:1 for text | Nav links fixed (1.21:1 to 15.23:1, see re-check). Muted text 3.96:1 and indigo text on navy 3.04:1 not yet re-measured | **PARTIAL** |
-| Legal and support pages | Exist and are linked | `/about`, `/privacy`, `/terms`, `/website-terms`, `/cookies`, `/resources` all return 404 | **FAIL** |
+| Navigation anchors | Every header, footer and card link is an on-page anchor | Link targets not yet read; footer has no legal links | **NOT TESTED** |
 | Placeholders | None visible | 3 `[ ]` placeholders still live after the re-check | **FAIL** |
 
 The site is part-way through the restructure. New sections and styling have been added, but most of the old sections have not been deleted, so the page is longer than before.
@@ -226,14 +226,14 @@ Replace these with real facts or delete the lines. In the hero screenshot the ey
 
 ---
 
-## 8. Pages and links
+## 8. Navigation and links
 
-All of these return the site's 404 page:
+The site is a single-page layout with no sub-pages, so `/about`, `/privacy`, `/terms`, `/website-terms`, `/cookies` and `/resources` returning the 404 page is expected. It is not a failure and has been removed from the verdict.
 
-`/about`, `/privacy`, `/terms`, `/website-terms`, `/cookies`, `/resources`
+What is still open:
 
-- The header already shows "Resources" and "About" links, so they likely lead to dead pages. I didn't check each link's destination.
-- The footer shows Home, Jobs, Engineers, Employers, Why Us and Resources. It has **no Privacy, Terms or Cookies links**, even though the site collects emails, CVs and runs Google Analytics.
+- **Not checked:** where each header, footer and card link points. The plan requires every one to be an on-page anchor (`#roles`, `#why-us`, `#employers`, `#contact` and so on). The destinations of the header "Resources" and "About" links were not read, so it is unknown whether they jump to a section or to a route that does not exist.
+- **Footer legal links:** the footer shows Home, Jobs, Engineers, Employers, Why Us and Resources, with **no Privacy, Terms or Cookies links**, even though the site collects emails and CVs and runs Google Analytics. The legal text needs to live on the page and be reachable by anchor from the footer.
 
 ---
 
@@ -244,7 +244,7 @@ All of these return the site's 404 page:
 3. Delete the old sections that the new ones replaced, and merge the two employer sections.
 4. Unify buttons: two heights (48 and 56), one label per action, remove "Get in Touch" variants and the second "Subscribe". **Still open**: re-checked and unchanged (17 filled, 14 indigo, 7 heights).
 5. Decide the weight rule. If 300/500, apply it globally and review the result on the dark background.
-6. Create `/privacy`, `/terms`, `/website-terms` and `/cookies` and link them in the footer.
+6. Add the legal text (Privacy, Terms of Business, Website Terms) as on-page sections and link them from the footer with anchors (`#privacy`, `#terms`, `#web-terms`). Read the existing header and footer link targets and convert any route to an anchor.
 7. Decide whether the page stays dark. If it does, define dark-theme tokens instead of mixing the light Stripe ones.
 8. Re-run this audit after the changes.
 
@@ -257,3 +257,4 @@ All of these return the site's 404 page:
 - Only the hero was screenshotted. Mid-page screenshots timed out in the earlier audit and were not retried.
 - The 300/500 and "strictly indigo" targets are as stated in the request.
 - Cookie and storage observations from the Cookie Policy check are not repeated here.
+- An earlier version of this report counted the 404s on sub-page routes as failures. That was removed once it was confirmed that the site is a single page with no sub-pages.
