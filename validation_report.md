@@ -11,11 +11,33 @@
 | Font weights | Only 300 and 500 | 20 of 246 text elements (8%) | **FAIL** |
 | Primary colour | Strictly indigo `#533afd` | Every CTA fill is indigo; a few off-brand accents remain | **PARTIAL** |
 | Button overload | About one filled button per section | 14 filled CTAs, 7 button heights, 6+ labels for 3 actions | **FAIL** |
-| Contrast | 4.5:1 for text | Nav links 1.21:1; muted text 3.96:1; indigo text on navy 3.04:1 | **FAIL** |
+| Contrast | 4.5:1 for text | Nav links fixed (1.21:1 to 15.23:1, see re-check). Muted text 3.96:1 and indigo text on navy 3.04:1 not yet re-measured | **PARTIAL** |
 | Legal and support pages | Exist and are linked | `/about`, `/privacy`, `/terms`, `/website-terms`, `/cookies`, `/resources` all return 404 | **FAIL** |
-| Placeholders | None visible | 3 `[ ]` placeholders are live on the public page | **FAIL** |
+| Placeholders | None visible | 3 `[ ]` placeholders still live after the re-check | **FAIL** |
 
 The site is part-way through the restructure. New sections and styling have been added, but most of the old sections have not been deleted, so the page is longer than before.
+
+---
+
+## Re-check after the nav contrast and placeholder fixes
+
+Re-measured on the live site after the Landingsite prompts for the nav contrast and the placeholders were prepared. Only those two items were re-checked; everything else in this report is from the first pass.
+
+| Item | First pass | Re-check | Status |
+|---|---|---|---|
+| Header nav link colour | `#0d253d` on `#0a1120`, **1.21:1** | `#e5e7eb` on `rgba(10,17,32,0.92)`, weight 500, **15.23:1** | **Fixed** |
+| "Browse roles" button text | White on `#533afd`, 6.19:1 | Unchanged, 6.19:1 | Pass |
+| Hero eyebrow pill | Looked empty | Now reads "Engineering recruitment, Australia" | **Fixed** |
+| Hero trust line (y≈907) | `[ N placements ] \| [ N roles filled in sectors ] · As seen on LinkedIn` | Same text | **Not fixed** |
+| Why us card (y≈10,394) | `...knowledge in [ sectors ].` | Same text | **Not fixed** |
+| Employer checklist (y≈14,750) | `Shortlist in [ N ] days` | Same text | **Not fixed** |
+
+**What this means**
+
+- The nav link fix is live and passes by a wide margin. Hover, active and focus states and the mobile menu were not tested in this re-check.
+- The three placeholders are unchanged, so the public page still shows unfinished text. The remove-the-wording prompt (or the fill-in prompt, if real figures are available) has not been applied.
+- Page title and meta description were checked and contain no placeholder text. The meta description still reads generically ("Explore Your Next Job AU, your ultimate source for career advice...") and the old hero headline is unchanged.
+- Not re-measured: muted text (`#64748b`, 3.96:1), indigo text on navy (`#533afd`, 3.04:1), button counts, font weights and section structure. These keep their first-pass results below.
 
 ---
 
@@ -172,8 +194,8 @@ All of these return the site's 404 page:
 
 ## 9. Recommended next steps (in priority order)
 
-1. Fix the nav link colour (contrast 1.21:1).
-2. Remove the three live placeholders.
+1. ~~Fix the nav link colour (contrast 1.21:1).~~ Done: 15.23:1 on the re-check.
+2. Remove the three live placeholders. **Still open** (hero trust line, Why us card, employer checklist).
 3. Delete the old sections that the new ones replaced, and merge the two employer sections.
 4. Unify buttons: two heights (48 and 56), one label per action, remove "Get in Touch" variants and the second "Subscribe".
 5. Decide the weight rule. If 300/500, apply it globally and review the result on the dark background.
