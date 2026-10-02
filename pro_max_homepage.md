@@ -168,7 +168,7 @@ The live page pitches employers twice: "Need Specialized Engineering Staff?" nea
 
 1. `Peer-to-peer screening`: every candidate pre-vetted by a senior civil engineer; Tier 1 and Tier 2 package experience.
 2. `Passive talent network`: mapping and engaging professionals in the Victorian market who are not applying on job boards.
-3. `Zero-risk contingency` (the featured card, dark navy): standard contingency model, blind technically screened profiles at no upfront cost, fee only if you hire. Link `Ask about our terms of business →` goes to the contact form, not a `mailto:` with a visible email address.
+3. `Zero-risk contingency` (the featured card, dark navy): standard contingency model, blind technically screened profiles at no upfront cost, fee only if you hire. Link `Ask about our terms of business →` goes to `/terms#key-terms` (section 10), with a second link `Or request a consultation` to the contact form; no `mailto:` with a visible email address.
 
 **Optional strip ("How it works", three steps):** `Brief us` · `We search and vet` · `You meet a shortlist`. The earlier stats row (placements, days to shortlist) is dropped unless real numbers are supplied.
 
@@ -290,11 +290,55 @@ The site collects personal information in several places, and the footer plan li
 - No email address, phone number or ABN appears unless the owner supplies it.
 - This is a draft structure, not legal advice. Have the final text reviewed, in particular section 5, since collecting details from public sources has its own requirements under the Australian Privacy Principles, and whether the Privacy Act applies depends on the business's circumstances. The newsletter also needs Spam Act compliance (consent, sender identification, working unsubscribe link), which is separate from this policy.
 
-**Open item:** the contingency card refers to "terms of business". That is a separate document and is not covered by this plan.
+**Related page:** the contingency card refers to "terms of business". That is a separate document, covered in section 10.
 
 ---
 
-## 10. Suggested implementation order
+## 10. Terms of Business page (new page, `/terms`)
+
+The live contingency card ends in a `mailto:` button, "Contact Us for Terms of Business", so the terms are only available on request and no `/terms` page exists. This page publishes the client terms for employers, in the same long-form layout as the Privacy Policy. I have not confirmed whether `/terms` already exists, so the plan is to create it only if missing.
+
+**What the site already commits to (and the terms must match):** contingency basis, zero upfront cost, blind technically screened profiles, and a placement fee only if the employer hires a candidate introduced by the business.
+
+**Page structure**
+
+- **Header block:** eyebrow `Legal`, H1 `Terms of Business`, last-updated date, a short intro that repeats the contingency promise.
+- **"Key terms at a glance" card** directly under the header (anchor `#key-terms`): `Upfront cost: None` · `When a fee applies: only if you hire a candidate we introduce` · `Fee: [ N ]% of [ remuneration basis ] or fixed fee` · `Payment terms: [ N ] days, plus GST`. The card must agree with the full terms below; any placeholder value is highlighted.
+
+| # | Section | Anchor | Content |
+|---|---|---|---|
+| 1 | Definitions | `#definitions` | `[ legal entity, ABN ]`, You, Candidate, Introduction, Placement. |
+| 2 | Introductions and blind profiles | `#introductions` | Screened candidates; blind profiles hide identity until the candidate agrees; no guarantee of suitability. |
+| 3 | Fees | `#fees` | No upfront fee; fee only on a Placement; `[ percentage and basis ]`; contract and temporary engagements `[ describe ]`; GST exclusive. |
+| 4 | Invoicing and payment | `#invoicing` | `[ invoice trigger ]`, `[ N ]` days, `[ late terms ]`. |
+| 5 | Introduction protection | `#protection` | Fee applies to engagement within `[ N ]` months of introduction, including via related parties; no passing details on without asking. |
+| 6 | Replacement or refund | `#guarantee` | `[ exact terms, or state that there is no guarantee ]`. |
+| 7 | Candidates | `#candidates` | `[ confirm candidates are not charged ]`; accuracy of information; client responsible for its own checks. |
+| 8 | Confidentiality and privacy | `#confidentiality` | Mutual confidentiality; links to `/privacy`. |
+| 9 | Liability | `#liability` | `[ lawyer-approved limits only ]`. |
+| 10 | Governing law | `#law` | `[ state or territory ]`, Australia. |
+| 11 | Changes to these terms | `#changes` | Date at the top; which version applies to existing introductions `[ confirm ]`. |
+| 12 | Contact us | `#contact-us` | `[ business name / ABN ]`, `[ terms contact email ]`, `[ reply time ]`. |
+
+**Links to wire**
+
+- Footer bottom bar: `Terms` → `/terms` beside `Privacy Policy`; footer Employers column: `Terms of business` → `/terms`.
+- Featured Zero-risk contingency card: `Ask about our terms of business →` → `/terms#key-terms`, plus `Or request a consultation` → `#contact`. Remove every remaining `mailto:` terms button.
+- Contact form, when the visitor selects Employer: a note under the button that the Terms of Business apply to introductions, with no required checkbox.
+- Page title `Terms of Business | Your Next Job AU`, meta description under 155 characters, add to the sitemap.
+
+**Rules**
+
+- No fee, percentage, period, jurisdiction or guarantee is written in unless the owner supplies it; every one stays a visible `[ ]` placeholder, and the page is not published while any remain.
+- The terms, the key-terms card, the "No fee until you hire" checklist line and the contingency card wording must say exactly the same thing.
+- This is a draft structure, not legal advice. Have a lawyer review the final text. Standard-form contracts with small businesses can fall under the unfair contract terms rules, so clauses such as long introduction-protection periods, broad liability exclusions and automatic fee triggers need particular care.
+- If there is no replacement or refund, say so plainly rather than omitting the section.
+
+**Not covered:** terms of use for the website itself are a separate document and are not in this plan.
+
+---
+
+## 11. Suggested implementation order
 
 1. Define tokens (type scale, one primary, radii, spacing) in `:root`.
 2. Fix heading line-height and tracking, and unify h2 to a single size.
@@ -302,4 +346,5 @@ The site collects personal information in several places, and the footer plan li
 4. Rebuild sections in the order in section 5 (merge, then delete).
 5. Create the About page (section 8) so the nav, footer and Why us links resolve.
 6. Create the Privacy Policy page (section 9), fill every `[ ]` placeholder, and have it reviewed before publishing, so the footer and form links resolve.
-7. Re-run this audit, including mobile widths and screenshots, once the changes are live.
+7. Create the Terms of Business page (section 10), fill every `[ ]` placeholder, have it reviewed, and then repoint the contingency card and footer links to it.
+8. Re-run this audit, including mobile widths and screenshots, once the changes are live.
